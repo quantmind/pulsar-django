@@ -1,3 +1,4 @@
-# pulsar-django
+Asynchronous Django
+=========================
 
 django pulse application

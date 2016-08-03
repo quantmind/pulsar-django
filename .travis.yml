@@ -1,0 +1,22 @@
+language: python
+
+sudo: false
+
+python:
+  - 3.5.2
+
+services:
+  - redis-server
+
+install:
+  - pip install -r requirements-dev.txt
+  - python setup.py install
+  - rm -rf pulse
+
+script:
+  - python setup.py test --coverage -q
+  - flake8
+  - if [[ $TRAVIS_PYTHON_VERSION == 3.5.1 ]]; then python setup.py test -a "--coveralls"; fi
+
+notifications:
+  email: false
