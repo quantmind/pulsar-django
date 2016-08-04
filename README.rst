@@ -10,7 +10,9 @@ Asynchronous Django
 
 The `pulse` module is a django_ application
 for running a django web site with pulsar_.
-Add it to the list of your ``INSTALLED_APPS``::
+Add it to the list of your ``INSTALLED_APPS``:
+
+.. code:: python
 
     INSTALLED_APPS = (
         ...,
@@ -59,7 +61,41 @@ adjust this number::
     python manage.py pulse -w 4 --greenlet 200
 
 
+Django Chat Example
+=======================
 
+This is a web chat application which illustrates how to run a django
+site with pulsar and how to include pulsar asynchronous request middleware
+into django.
+
+To run::
+
+    python manage.py pulse
+
+If running for the first time, issue the::
+
+    python manage.py syncdb
+
+command and create the super user.
+
+
+Message and data backend
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+By default, messages from connected (websocket) clients are synchronised via
+the pulsar data store which starts when the django
+site starts.
+
+It is possible to specify a different data store via the
+``data-store`` option. For example, it is possible
+to use redis_ as an alternative data store
+by issuing the following start up command::
+
+    python manage.py pulse --data-store redis://127.0.0.1:6379/3
+
+
+
+.. _redis: http://redis.io/
 .. _django: https://docs.djangoproject.com/en/1.9/ref/applications/
 .. _pulsar: https://github.com/quantmind/pulsar
 .. _greenlet: https://greenlet.readthedocs.io
