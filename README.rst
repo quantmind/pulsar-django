@@ -6,6 +6,7 @@ Asynchronous Django
 :Documentation: https://github.com/quantmind/pulsar-django
 :Downloads: http://pypi.python.org/pypi/pulsar-django
 :Source: https://github.com/quantmind/pulsar-django
+:Keywords: asynchronous, django, wsgi, websocket, redis
 
 
 The `pulse` module is a django_ application
@@ -103,3 +104,11 @@ by issuing the following start up command::
 .. _master-build: http://travis-ci.org/quantmind/pulsar-django
 .. |coverage-master| image:: https://coveralls.io/repos/github/quantmind/pulsar-django/badge.svg?branch=master
   :target: https://coveralls.io/github/quantmind/pulsar-django?branch=master
+.. |pypiversion| image:: https://badge.fury.io/py/pulsar-django.svg
+    :target: https://pypi.python.org/pypi/pulsar-django
+.. |pyversions| image:: https://img.shields.io/pypi/pyversions/pulsar-django.svg
+  :target: https://pypi.python.org/pypi/pulsar-django
+.. |license| image:: https://img.shields.io/pypi/l/pulsar-django.svg
+  :target: https://pypi.python.org/pypi/pulsar-django
+.. |status| image:: https://img.shields.io/pypi/status/pulsar-django.svg
+  :target: https://pypi.python.org/pypi/pulsar-django

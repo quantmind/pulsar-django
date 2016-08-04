@@ -5,7 +5,7 @@ import pulsar
 from pulsar import Setting
 from pulsar.apps.wsgi import WSGIServer
 
-from pulse import Wsgi
+from pulse.wsgi import Wsgi
 
 from django.core.management.base import (BaseCommand, CommandError,
                                          OutputWrapper, handle_default_options)

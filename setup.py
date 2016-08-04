@@ -3,6 +3,8 @@ import os
 
 from setuptools import setup, find_packages
 
+import pulse
+
 
 def read(name):
     filename = os.path.join(os.path.dirname(__file__), name)
@@ -29,8 +31,8 @@ def requirements(name):
 
 
 meta = dict(
-    version='0.1.0',
-    description='Serve django sites with pulsar asynchronous framework',
+    version=pulse.__version__,
+    description=pulse.__doc__,
     name='pulsar-django',
     author='Luca Sbardella',
     author_email="luca@quantmind.com",
