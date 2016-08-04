@@ -1,2 +1,2 @@
 pulsar
-django<1.10
+django

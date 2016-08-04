@@ -3,6 +3,7 @@ import os
 
 from setuptools import setup, find_packages
 
+
 def read(name):
     filename = os.path.join(os.path.dirname(__file__), name)
     with open(filename) as fp:
@@ -37,7 +38,7 @@ meta = dict(
     url="https://github.com/quantmind/pulsar-django",
     license="BSD",
     long_description=read('README.rst'),
-    packages=find_packages(exclude=['example', 'example.*']),
+    packages=find_packages(include=['pulse', 'pulse.*']),
     include_package_data=True,
     zip_safe=False,
     install_requires=requirements('requirements.txt')[0],

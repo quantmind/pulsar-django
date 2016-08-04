@@ -4,7 +4,8 @@ import sys
 import pulsar
 from pulsar import Setting
 from pulsar.apps.wsgi import WSGIServer
-from pulsar.apps.pulse import Wsgi
+
+from pulse import Wsgi
 
 from django.core.management.base import (BaseCommand, CommandError,
                                          OutputWrapper, handle_default_options)
@@ -45,30 +46,15 @@ class Command(BaseCommand):
         return pulsar.__version__
 
     def create_parser(self, prog_name, subcommand):
+        parser = super().create_parser(prog_name, subcommand)
         cfg = pulsar.Config(apps=['socket', 'pulse'],
                             exclude=['debug'],
                             description=self.help,
                             version=self.get_version())
-        parser = cfg.parser()
-        for option in self.option_list:
-            flags = []
-            if option._short_opts:
-                flags.extend(option._short_opts)
-            if option._long_opts:
-                flags.extend(option._long_opts)
-            type = option.type
-            if type == 'choice':
-                type = None
-            s = Setting(option.dest, flags=flags, choices=option.choices,
-                        default=option.default, action=option.action,
-                        type=type, nargs=option.nargs, desc=option.help)
-            s.add_argument(parser)
-        return parser
+        return cfg.add_to_parser(parser)
 
     def run_from_argv(self, argv):
         parser = self.create_parser(argv[0], argv[1])
-        parser.add_argument('--settings')
-        parser.add_argument('--pythonpath')
         options = parser.parse_args(argv[2:])
         handle_default_options(options)
         try:

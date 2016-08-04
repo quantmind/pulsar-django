@@ -2,13 +2,9 @@
 import unittest
 
 from pulsar.apps import wsgi
-try:
-    from pulsar.apps.pulse.management.commands.pulse import Command
-except ImportError:
-    Command = None
+from pulse.management.commands.pulse import Command
 
 
-@unittest.skipUnless(Command, 'Requires django')
 class pulseCommandTest(unittest.TestCase):
 
     def test_pulse(self):

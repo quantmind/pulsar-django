@@ -7,7 +7,7 @@ from pulsar.apps import http, ws
 from pulsar.apps.test import dont_run_with_thread
 from pulsar.utils.string import gen_unique_id
 
-from tests.djchat.manage import server
+from djchat import server
 
 
 async def start_server(actor, name, argv):
@@ -64,7 +64,6 @@ class TestDjangoChat(unittest.TestCase):
         self.assertEqual(result.status_code, 404)
 
     async def test_websocket(self):
-        # TODO: fix this test. Someties it timesout
         c = self.http
         ws = await c.get(self.ws, websocket_handler=MessageHandler(c._loop))
         response = ws.handshake
