@@ -16,7 +16,7 @@ install:
 script:
   - python setup.py test --coverage -q
   - flake8
-  - then python setup.py test -a "--coveralls"
+  - python setup.py test -a "--coveralls"
 
 notifications:
   email: false

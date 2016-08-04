@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os
+import sys
 
 from setuptools import setup, find_packages
 
@@ -44,9 +45,8 @@ meta = dict(
     include_package_data=True,
     zip_safe=False,
     install_requires=requirements('requirements.txt')[0],
-    # tests_require=config.requirements('requirements-dev.txt')[0],
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
@@ -60,4 +60,11 @@ meta = dict(
 
 
 if __name__ == '__main__':
-    setup(**meta)
+    command = sys.argv[1] if len(sys.argv) > 1 else None
+    if command == 'agile':
+        from agile.app import AgileManager
+
+        AgileManager(description='Release manager for pulsar-django',
+                     argv=sys.argv[2:]).start()
+    else:
+        setup(**meta)

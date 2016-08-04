@@ -1,5 +1,5 @@
 [run]
-source = pulse,tests
+source = pulse,tests,djchat
 concurrency = greenlet,multiprocessing
 
 [report]
