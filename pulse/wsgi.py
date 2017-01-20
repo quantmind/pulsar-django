@@ -21,8 +21,7 @@ class Wsgi(LazyWsgi):
         except AttributeError:  # pragma nocover
             dotted = None
         if dotted:
-            app = module_attribute(dotted)
+            return module_attribute(dotted)()
         else:
-            app = get_wsgi_application()
-        app = middleware_in_executor(app)
-        return WsgiHandler((wait_for_body_middleware, app))
+            app = middleware_in_executor(get_wsgi_application())
+            return WsgiHandler((wait_for_body_middleware, app))
