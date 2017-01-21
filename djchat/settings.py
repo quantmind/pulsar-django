@@ -67,9 +67,6 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'djchat.urls'
 
-WSGI_APPLICATION = 'djchat.wsgi.application'
-
-
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 

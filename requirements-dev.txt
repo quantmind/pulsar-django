@@ -1,4 +1,3 @@
 coverage
 flake8
 greenlet
--e git+https://github.com/quantmind/pulsar.git@master#egg=pulsar
