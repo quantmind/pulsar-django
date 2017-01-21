@@ -7,19 +7,5 @@
             "version": "{{ pulse_version }}",
             "release_notes": "notes"
         }
-    },
-    "shell": {
-        "pulsar": {
-            "command": [
-                "rm -rf dist",
-                "{{ python }} setup.py release"
-            ]
-        }
-    },
-    "tasks": {
-        "release": {
-            "description": "make a new release to github",
-            "command": ["python", "github:pulsar"]
-        }
     }
 }
