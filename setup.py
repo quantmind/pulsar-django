@@ -44,6 +44,7 @@ meta = dict(
     packages=find_packages(include=['pulse', 'pulse.*']),
     include_package_data=True,
     zip_safe=False,
+    setup_requires=['wheel'],
     install_requires=requirements('requirements.txt')[0],
     classifiers=[
         'Development Status :: 4 - Beta',
