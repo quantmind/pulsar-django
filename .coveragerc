@@ -1,6 +1,6 @@
 [run]
 source = pulse,tests,djchat
-concurrency = greenlet,multiprocessing
+concurrency = multiprocessing
 
 [report]
 # Regexes for lines to exclude from consideration
