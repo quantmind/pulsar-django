@@ -111,6 +111,6 @@ by issuing the following start up command::
 .. |status| image:: https://img.shields.io/pypi/status/pulsar-django.svg
   :target: https://pypi.python.org/pypi/pulsar-django
 .. |coverage| image:: https://codecov.io/gh/quantmind/pulsar-django/branch/master/graph/badge.svg
-  :target: https://codecov.io/gh/quantmind/pulsar-queue
+  :target: https://codecov.io/gh/quantmind/pulsar-django
 .. |circleci| image:: https://circleci.com/gh/quantmind/pulsar-django.svg?style=svg
-    :target: https://circleci.com/gh/quantmind/pulsar-queue
+    :target: https://circleci.com/gh/quantmind/pulsar-django
