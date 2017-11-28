@@ -2,7 +2,7 @@ Asynchronous Django
 =========================
 
 :Badges: |license|  |pyversions| |status| |pypiversion|
-:Master CI: |master-build|_ |coverage-master|
+:CI: |circleci| |coverage|
 :Documentation: https://github.com/quantmind/pulsar-django
 :Downloads: http://pypi.python.org/pypi/pulsar-django
 :Source: https://github.com/quantmind/pulsar-django
@@ -102,10 +102,6 @@ by issuing the following start up command::
 .. _django: https://docs.djangoproject.com/en/1.9/ref/applications/
 .. _pulsar: https://github.com/quantmind/pulsar
 .. _greenlet: https://greenlet.readthedocs.io
-.. |master-build| image:: https://travis-ci.org/quantmind/pulsar-django.svg?branch=master
-.. _master-build: http://travis-ci.org/quantmind/pulsar-django
-.. |coverage-master| image:: https://coveralls.io/repos/github/quantmind/pulsar-django/badge.svg?branch=master
-  :target: https://coveralls.io/github/quantmind/pulsar-django?branch=master
 .. |pypiversion| image:: https://badge.fury.io/py/pulsar-django.svg
     :target: https://pypi.python.org/pypi/pulsar-django
 .. |pyversions| image:: https://img.shields.io/pypi/pyversions/pulsar-django.svg
@@ -114,3 +110,7 @@ by issuing the following start up command::
   :target: https://pypi.python.org/pypi/pulsar-django
 .. |status| image:: https://img.shields.io/pypi/status/pulsar-django.svg
   :target: https://pypi.python.org/pypi/pulsar-django
+.. |coverage| image:: https://codecov.io/gh/quantmind/pulsar-django/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/quantmind/pulsar-queue
+.. |circleci| image:: https://circleci.com/gh/quantmind/pulsar-django.svg?style=svg
+    :target: https://circleci.com/gh/quantmind/pulsar-queue

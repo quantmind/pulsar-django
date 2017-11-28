@@ -1,6 +1,7 @@
 include MANIFEST.in
 include LICENSE
 include README.rst
+include Makefile
 graft requirements
 graft djchat
 graft tests

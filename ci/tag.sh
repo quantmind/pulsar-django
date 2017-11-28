@@ -5,4 +5,3 @@ echo ${VERSION}
 
 git push
 git tag -am "Release $VERSION [ci skip]" ${VERSION}
-git push --tags
