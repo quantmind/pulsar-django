@@ -53,6 +53,8 @@ class TestDjangoChat(unittest.TestCase):
     async def test_home(self):
         result = await self.http.get(self.uri)
         self.assertEqual(result.status_code, 200)
+        self.assertEqual(result.headers['content-type'],
+                         'text/html; charset=utf-8')
 
     async def test_404(self):
         result = await self.http.get('%s/bsjdhcbjsdh' % self.uri)

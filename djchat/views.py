@@ -1,5 +1,8 @@
 import time
 
+from django.shortcuts import render_to_response
+from django.http import HttpResponse
+
 from pulsar.api import HttpException
 from pulsar.apps import ws
 from pulsar.apps.data import PubSubClient, create_store
@@ -8,7 +11,6 @@ from pulsar.utils.string import random_string
 
 
 def home(request):
-    from django.shortcuts import render_to_response
     return render_to_response('home.html', {
         'HOST': request.get_host()
         })
@@ -112,7 +114,6 @@ class middleware:
         self._web_socket = ws.WebSocket('/message', Chat())
 
     def process_request(self, request):
-        from django.http import HttpResponse
         environ = request.META.copy()
         environ['django.user'] = request.user
         environ['django.session'] = request.session
