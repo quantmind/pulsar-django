@@ -3,15 +3,14 @@ language: python
 sudo: false
 
 python:
-  - 3.5.2
+  - 3.5.4
+  - 3.6.3
 
 services:
   - redis-server
 
 install:
-  - pip install -r requirements-dev.txt
-  - python setup.py install
-  - rm -rf pulse
+  - ci/install.sh
 
 script:
   - python setup.py test --coverage -q

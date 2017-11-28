@@ -1,5 +1,8 @@
 include MANIFEST.in
 include LICENSE
 include README.rst
-recursive-include djchat *.py *.js *.css *.html *.json
-recursive-include tests *.py
+graft requirements
+graft djchat
+graft tests
+graft pulse
+global-exclude *.pyc

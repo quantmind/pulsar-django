@@ -1,6 +1,6 @@
 import time
 
-from pulsar import HttpException
+from pulsar.api import HttpException
 from pulsar.apps import ws
 from pulsar.apps.data import PubSubClient, create_store
 from pulsar.utils.system import json
@@ -76,10 +76,10 @@ class Chat(ws.WS):
         '''
         if msg:
             lines = []
-            for l in msg.split('\n'):
-                l = l.strip()
-                if l:
-                    lines.append(l)
+            for li in msg.split('\n'):
+                li = li.strip()
+                if li:
+                    lines.append(li)
             msg = ' '.join(lines)
             if msg:
                 return self.publish(websocket, 'webchat', msg)
@@ -113,7 +113,7 @@ class middleware:
 
     def process_request(self, request):
         from django.http import HttpResponse
-        environ = request.META
+        environ = request.META.copy()
         environ['django.user'] = request.user
         environ['django.session'] = request.session
         try:
@@ -125,9 +125,6 @@ class middleware:
             # Convert to django response
             resp = HttpResponse(status=response.status_code,
                                 content_type=response.content_type)
-            for header, value in response.headers:
+            for header, value in response.headers.items():
                 resp[header] = value
             return resp
-        else:
-            environ.pop('django.user')
-            environ.pop('django.session')

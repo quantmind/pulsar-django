@@ -2,10 +2,8 @@
 import unittest
 import asyncio
 
-from pulsar import send, get_application
+from pulsar.api import send, get_application
 from pulsar.apps import http, ws
-from pulsar.apps.test import dont_run_with_thread
-from pulsar.utils.string import gen_unique_id
 
 from djchat import server
 
@@ -30,21 +28,18 @@ class MessageHandler(ws.WS):
 
 
 class TestDjangoChat(unittest.TestCase):
-    concurrency = 'thread'
+    concurrency = 'process'
     app_cfg = None
 
     @classmethod
     async def setUpClass(cls):
-        cls.exc_id = gen_unique_id()[:8]
         name = cls.__name__.lower()
         argv = [__file__, 'pulse',
                 '-b', '127.0.0.1:0',
                 '--concurrency', cls.concurrency,
-                '--exc-id', cls.exc_id,
                 '--pulse-app-name', name,
                 '--data-store', 'pulsar://127.0.0.1:6410/1']
         cls.app_cfg = await send('arbiter', 'run', start_server, name, argv)
-        assert cls.app_cfg.exc_id == cls.exc_id, "Bad execution id"
         addr = cls.app_cfg.addresses[0]
         cls.uri = 'http://{0}:{1}'.format(*addr)
         cls.ws = 'ws://{0}:{1}/message'.format(*addr)
@@ -72,8 +67,3 @@ class TestDjangoChat(unittest.TestCase):
         self.assertEqual(response.connection, ws.connection)
         self.assertTrue(ws.connection)
         self.assertIsInstance(ws.handler, MessageHandler)
-
-
-@dont_run_with_thread
-class TestDjangoChat_Process(TestDjangoChat):
-    concurrency = 'process'

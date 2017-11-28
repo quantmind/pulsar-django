@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import os
-import sys
 
 from setuptools import setup, find_packages
 
@@ -44,8 +43,8 @@ meta = dict(
     packages=find_packages(include=['pulse', 'pulse.*']),
     include_package_data=True,
     zip_safe=False,
-    setup_requires=['wheel'],
-    install_requires=requirements('requirements.txt')[0],
+    setup_requires=['pulsar', 'wheel'],
+    install_requires=requirements('requirements/hard.txt')[0],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
@@ -61,11 +60,4 @@ meta = dict(
 
 
 if __name__ == '__main__':
-    command = sys.argv[1] if len(sys.argv) > 1 else None
-    if command == 'agile':
-        from agile.app import AgileManager
-
-        AgileManager(description='Release manager for pulsar-django',
-                     argv=sys.argv[2:]).start()
-    else:
-        setup(**meta)
+    setup(**meta)

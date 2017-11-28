@@ -43,6 +43,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(APP_DIR, 'templates')],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -66,6 +67,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'djchat.urls'
+
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases

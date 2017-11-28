@@ -75,9 +75,11 @@ To run::
 
 If running for the first time, issue the::
 
-    python manage.py syncdb
+    python manage.py migrate
 
-command and create the super user.
+command and create the super user::
+
+    python manage.py createsuperuser
 
 
 Message and data backend

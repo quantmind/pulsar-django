@@ -2,13 +2,14 @@
 import sys
 
 import pulsar
-from pulsar import Setting
+from pulsar.api import Setting, Config
 from pulsar.apps.wsgi import WSGIServer
 
 from pulse.wsgi import Wsgi
 
-from django.core.management.base import (BaseCommand, CommandError,
-                                         OutputWrapper, handle_default_options)
+from django.core.management.base import (
+    BaseCommand, CommandError, OutputWrapper, handle_default_options
+)
 
 
 class PulseAppName(Setting):
@@ -34,9 +35,9 @@ class Command(BaseCommand):
         if options.pop('dryrun', False) is True:  # used for testing
             return callable
         # callable.setup()
-        cfg = pulsar.Config(apps=['socket', 'pulse'],
-                            server_software=pulsar.SERVER_SOFTWARE,
-                            **options)
+        cfg = Config(apps=['socket', 'pulse'],
+                     server_software=pulsar.SERVER_SOFTWARE,
+                     **options)
         server = WSGIServer(callable=callable, name=app_name, cfg=cfg,
                             parse_console=False)
         callable.cfg = server.cfg
@@ -47,10 +48,10 @@ class Command(BaseCommand):
 
     def create_parser(self, prog_name, subcommand):
         parser = super().create_parser(prog_name, subcommand)
-        cfg = pulsar.Config(apps=['socket', 'pulse'],
-                            exclude=['debug'],
-                            description=self.help,
-                            version=self.get_version())
+        cfg = Config(apps=['socket', 'pulse'],
+                     exclude=['debug'],
+                     description=self.help,
+                     version=self.get_version())
         return cfg.add_to_parser(parser)
 
     def run_from_argv(self, argv):
