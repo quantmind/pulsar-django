@@ -1,6 +1,7 @@
 """Tests django chat application"""
 import unittest
 import asyncio
+import json
 
 from pulsar.api import send, get_application
 from pulsar.apps import http, ws
@@ -69,3 +70,15 @@ class TestDjangoChat(unittest.TestCase):
         self.assertEqual(response.connection, ws.connection)
         self.assertTrue(ws.connection)
         self.assertIsInstance(ws.handler, MessageHandler)
+        # send a message
+        ws.write('Hi there!')
+        message = await ws.handler.queue.get()
+        self.assertTrue(message)
+        data = json.loads(message)
+        self.assertEqual(data['message'], 'Hi there!')
+        self.assertEqual(data['channel'], 'webchat')
+        self.assertFalse(data['authenticated'])
+        #
+        # close connection
+        ws.write_close()
+        await ws.connection.event('connection_lost').waiter()
